@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 clear
 echo -e "\033[1m\033[38;5;214m+-----------------------------------------+\033[0m"
@@ -19,24 +20,27 @@ sudo pacman -Syu \
     dunst \
     feh \
     kitty \
-    emptty \
-    i3lock \
     thunar \
     tumbler \
+    pamixer \
     thunar-archive-plugin \
     yad \
     zsh \
+    zoxide \
+    bat \
     git \
-    xorg-xrandr
+    xorg-xrandr \
+    xdg-desktop-portal-gtk \
+    xdg-desktop-portal \
+    noto-fonts-emoji
 
 git clone https://aur.archlinux.org/yay.git /tmp/yay
-cd /tmp/yay
-makepkg -si
-cd ~
+(cd /tmp/yay && makepkg -si)
 
 yay -S \
     visual-studio-code-bin \
-    cloudflare-warp-bin
+    cloudflare-warp-bin \
+    i3lock-color
 
 echo
 echo -e "\033[38;5;214mSetting up Cloudflare WARP...\033[0m"
@@ -51,11 +55,10 @@ else
 fi
 
 git clone https://github.com/ColinZeDev/dotfiles.git /tmp/colin_dotfiles
-cd /tmp/colin_dotfiles
-
-cp .zshrc ~/.zshrc
-cp -r .config/* ~/.config/
-
-cd ~
+cp /tmp/colin_dotfiles/.zshrc ~/.zshrc
+cp -r /tmp/colin_dotfiles/.config/* ~/.config/
 
 chsh -s /bin/zsh
+
+echo
+echo -e "\033[1m\033[38;5;214mDone! Log out and back in to start using bspwm.\033[0m"
