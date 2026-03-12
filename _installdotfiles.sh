@@ -33,6 +33,8 @@ sudo pacman -Syu \
     xdg-desktop-portal-gtk \
     xdg-desktop-portal \
     noto-fonts-emoji
+    maim \
+    xclip
 
 git clone https://aur.archlinux.org/yay.git /tmp/yay
 (cd /tmp/yay && makepkg -si)
