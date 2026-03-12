@@ -1,5 +1,6 @@
 # My Cool Dotfiles for Arch Linux
-(Screenshots soon)
+### Kitty + Prompt
+![kitty](https://raw.githubusercontent.com/ColinZeDev/dotfiles/refs/heads/main/_screenshots/kitty.png)
 
 ---
 
