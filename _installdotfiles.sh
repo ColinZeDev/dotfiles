@@ -32,9 +32,10 @@ sudo pacman -Syu \
     xorg-xrandr \
     xdg-desktop-portal-gtk \
     xdg-desktop-portal \
-    noto-fonts-emoji
+    noto-fonts-emoji \
     maim \
-    xclip
+    xclip \
+    papirus-icon-theme
 
 git clone https://aur.archlinux.org/yay.git /tmp/yay
 (cd /tmp/yay && makepkg -si)
@@ -42,7 +43,8 @@ git clone https://aur.archlinux.org/yay.git /tmp/yay
 yay -S \
     visual-studio-code-bin \
     cloudflare-warp-bin \
-    i3lock-color
+    i3lock-color \
+    papirus-folders
 
 echo
 echo -e "\033[38;5;214mSetting up Cloudflare WARP...\033[0m"
@@ -60,6 +62,17 @@ git clone https://github.com/ColinZeDev/dotfiles.git /tmp/colin_dotfiles
 cp /tmp/colin_dotfiles/.zshrc ~/.zshrc
 cp /tmp/colin_dotfiles/.xinitrc ~/.xinitrc
 cp -r /tmp/colin_dotfiles/.config/* ~/.config/
+
+papirus-folders -C orange --theme Papirus-Dark
+mkdir -p ~/.local/share/icons
+cat > ~/.local/share/icons/default/index.theme << EOF
+[Icon Theme]
+Name=Default
+Comment=Default icon theme
+Inherits=Papirus-Dark
+EOF
+
+xdg-mime default thunar.desktop inode/directory
 
 chsh -s /bin/zsh
 
