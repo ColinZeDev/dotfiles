@@ -56,6 +56,7 @@ fi
 
 git clone https://github.com/ColinZeDev/dotfiles.git /tmp/colin_dotfiles
 cp /tmp/colin_dotfiles/.zshrc ~/.zshrc
+cp /tmp/colin_dotfiles/.xinitrc ~/.xinitrc
 cp -r /tmp/colin_dotfiles/.config/* ~/.config/
 
 chsh -s /bin/zsh
