@@ -1,6 +1,8 @@
 # My Cool Dotfiles for Arch Linux
 ### Kitty + Prompt
 ![kitty](https://raw.githubusercontent.com/ColinZeDev/dotfiles/refs/heads/main/_screenshots/kitty.png)
+### BSPWM
+![bspwm](https://raw.githubusercontent.com/ColinZeDev/dotfiles/refs/heads/main/_screenshots/bspwm.png)
 
 ---
 
