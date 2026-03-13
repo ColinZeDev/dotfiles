@@ -1,0 +1,106 @@
+# Terminal
+super + a
+    kitty
+
+# Browser
+super + b
+    flatpak run io.gitlab.librewolf-community
+
+# VSCode
+super + c
+    code
+
+# Lock screen
+super + alt + l
+    zsh ~/.config/bspwm/scripts/lock.zsh
+
+# File manager
+super + e
+    thunar
+
+# App Launcher
+super + space
+	rofi -show drun
+
+# Exit bspwm prompt
+super + Escape
+    yad --title="Exit bspwm" \
+        --text="Exit bspwm?" \
+        --button="Yes:0" \
+        --button="No:1" \
+        --center \
+        --on-top \
+        && bspc quit
+
+# Focus window (arrow keys)
+super + {Left,Down,Up,Right}
+    bspc node -f {west,south,north,east}
+
+# Move window (ctl + arrow keys)
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -s {west,south,north,east}
+
+# Move active window to prev/next workspace
+super + shift + Prior
+    bspc node -d prev.local --follow
+super + shift + Next
+    bspc node -d next.local --follow
+
+# Move active window to prev/next workspace (without following)
+super + alt + Prior
+    bspc node -d prev.local
+super + alt + Next
+    bspc node -d next.local
+
+# Move active window to specific workspace (1-9)
+super + shift + {1-9}
+    bspc node -d '^{1-9}'
+
+# Move and follow to specific workspace
+super + ctrl + shift + {1-9}
+    bspc node -d '^{1-9}' --follow
+
+# Resize horizontal (super + = / super + -)
+super + equal
+    bspc node -z right +20 0
+super + minus
+    bspc node -z right -20 0
+
+# Resize vertical (super + shift + = / super + shift + -)
+super + shift + equal
+    bspc node -z bottom 0 +20
+super + shift + minus
+    bspc node -z bottom 0 -20
+
+# Switch workspaces (pg up & pg down)
+super + Prior
+    zsh ~/.config/bspwm/scripts/switch-workspace.zsh prev
+super + Next
+    zsh ~/.config/bspwm/scripts/switch-workspace.zsh next
+
+# Switch to specific workspace (1-9)
+super + {1-9}
+    zsh ~/.config/bspwm/scripts/switch-workspace.zsh {1-9}
+
+# Close window
+super + q
+    bspc node -c
+# Force kill window
+super + shift + q
+    bspc node -k
+
+# Volume up
+XF86AudioRaiseVolume
+    pamixer -i 5
+
+# Volume down
+XF86AudioLowerVolume
+    pamixer -d 5
+
+# Mute toggle
+XF86AudioMute
+    pamixer -t
+
+# Screenshot
+super + shift + s
+    flameshot gui
