@@ -4,6 +4,8 @@
 # bar config in ~/.config/polybar/config.ini
 # app launcher config in ~/.config/rofi/config.rasi
 
+export XDG_DATA_DIRS="/var/lib/flatpak/exports/share/applications:$HOME/.local/share/flatpak/exports/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+
 pgrep -x sxhkd > /dev/null || sxhkd &
 MONITOR=$(xrandr -q | awk '/ connected/ {print $1; exit}') polybar mybar &
 picom --config ~/.config/picom/picom.conf &
