@@ -1,7 +1,6 @@
 # If you see this and ur on a fresh install, you remembered to copy ur zshrc
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
-export XDG_DATA_DIRS="$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
