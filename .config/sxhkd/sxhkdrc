@@ -10,9 +10,9 @@ super + b
 super + c
     code
 
-# Lock screen
-super + alt + l
-    zsh ~/.config/bspwm/scripts/lock.zsh
+# Obsidian
+super + o
+    flatpak run md.obsidian.Obsidian
 
 # File manager
 super + e
@@ -20,7 +20,11 @@ super + e
 
 # App Launcher
 super + space
-	rofi -show drun
+    rofi -show drun
+
+# Lock screen
+super + alt + l
+    zsh $HOME/.config/bspwm/scripts/lock.zsh
 
 # Exit bspwm prompt
 super + Escape
@@ -30,77 +34,78 @@ super + Escape
         --button="No:1" \
         --center \
         --on-top \
+        --gtkrc "$HOME/.config/bspwm/misc/yad.css" \
         && bspc quit
 
-# Focus window (arrow keys)
-super + {Left,Down,Up,Right}
-    bspc node -f {west,south,north,east}
+# --- Window Management ---
 
-# Move window (ctl + arrow keys)
-super + ctrl + {Left,Down,Up,Right}
-    bspc node -s {west,south,north,east}
+super + f
+    bspc node -t \~fullscreen
 
-# Move active window to prev/next workspace
-super + shift + Prior
-    bspc node -d prev.local --follow
-super + shift + Next
-    bspc node -d next.local --follow
+super + shift + f
+    bspc node -t \~floating
 
-# Move active window to prev/next workspace (without following)
-super + alt + Prior
-    bspc node -d prev.local
-super + alt + Next
-    bspc node -d next.local
-
-# Move active window to specific workspace (1-9)
-super + shift + {1-9}
-    bspc node -d '^{1-9}'
-
-# Move and follow to specific workspace
-super + ctrl + shift + {1-9}
-    bspc node -d '^{1-9}' --follow
-
-# Resize horizontal (super + = / super + -)
-super + equal
-    bspc node -z right +20 0
-super + minus
-    bspc node -z right -20 0
-
-# Resize vertical (super + shift + = / super + shift + -)
-super + shift + equal
-    bspc node -z bottom 0 +20
-super + shift + minus
-    bspc node -z bottom 0 -20
-
-# Switch workspaces (pg up & pg down)
-super + Prior
-    zsh ~/.config/bspwm/scripts/switch-workspace.zsh prev
-super + Next
-    zsh ~/.config/bspwm/scripts/switch-workspace.zsh next
-
-# Switch to specific workspace (1-9)
-super + {1-9}
-    zsh ~/.config/bspwm/scripts/switch-workspace.zsh {1-9}
-
-# Close window
 super + q
     bspc node -c
-# Force kill window
+
 super + shift + q
     bspc node -k
 
-# Volume up
+super + {Left,Down,Up,Right}
+    bspc node -f {west,south,north,east}
+
+super + shift + {Left,Down,Up,Right}
+    bspc node -s {west,south,north,east}
+
+super + equal
+    bspc node -z right +20 0 || bspc node -z left 0 -20
+super + minus
+    bspc node -z right -20 0 || bspc node -z left 0 +20
+
+# --- Workspaces ---
+
+super + {1-9}
+    zsh $HOME/.config/bspwm/scripts/switch-workspace.zsh {1-9}
+
+super + {Prior,Next}
+    zsh $HOME/.config/bspwm/scripts/switch-workspace.zsh {prev,next}
+
+super + shift + {1-9}
+    bspc node -d '^{1-9}'
+
+super + ctrl + shift + {1-9}
+    bspc node -d '^{1-9}' --follow
+
+super + ctrl + {Prior,Next}
+    bspc node -d {prev,next}.local --follow
+
+# --- Media ---
+
 XF86AudioRaiseVolume
-    pamixer -i 5
-
-# Volume down
+    zsh $HOME/.config/bspwm/scripts/volume.zsh up
 XF86AudioLowerVolume
-    pamixer -d 5
-
-# Mute toggle
+    zsh $HOME/.config/bspwm/scripts/volume.zsh down
+shift + XF86AudioRaiseVolume
+    zsh $HOME/.config/bspwm/scripts/volume.zsh up 1
+shift + XF86AudioLowerVolume
+    zsh $HOME/.config/bspwm/scripts/volume.zsh down 1
 XF86AudioMute
-    pamixer -t
+    zsh $HOME/.config/bspwm/scripts/volume.zsh mute
+XF86AudioMicMute
+    zsh $HOME/.config/bspwm/scripts/volume.zsh mic
 
-# Screenshot
+XF86MonBrightnessUp
+    zsh $HOME/.config/bspwm/scripts/brightness.zsh up
+XF86MonBrightnessDown
+    zsh $HOME/.config/bspwm/scripts/brightness.zsh down
+shift + XF86MonBrightnessUp
+    zsh $HOME/.config/bspwm/scripts/brightness.zsh up 1
+shift + XF86MonBrightnessDown
+    zsh $HOME/.config/bspwm/scripts/brightness.zsh down 1h
+
+# --- Misc ---
+
 super + shift + s
-    flameshot gui
+    flameshot gui --clipboard --path $HOME/Pictures/Screenshots/BSPWM_$(date +%Y-%m-%d_%H%M%S_%a).png
+super + ctrl + s
+    flameshot full --path $HOME/Pictures/Screenshots/BSPWM_$(date +%Y-%m-%d_%H%M%S_%a).png
