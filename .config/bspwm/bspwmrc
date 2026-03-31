@@ -3,31 +3,36 @@
 # keybinds are in ~/.config/sxhkd/sxhkdrc
 # bar config in ~/.config/polybar/config.ini
 # app launcher config in ~/.config/rofi/config.rasi
+# animation config in ~/.config/picom/picom.conf
 
-export XDG_DATA_DIRS="/var/lib/flatpak/exports/share/applications:$HOME/.local/share/flatpak/exports/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+
+dbus-update-activation-environment --systemd DISPLAY XAUTHORITY DBUS_SESSION_BUS_ADDRESS # this is here too cause idk if the one in xinitrc works and i dont wanna fuck with it
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-MONITOR=$(xrandr -q | awk '/ connected/ {print $1; exit}') polybar mybar &
+MONITOR=$(xrandr -q | awk '/ connected/ {print $1; exit}') polybar orangeshitbar &
 picom --config ~/.config/picom/picom.conf &
 pgrep -x dunst > /dev/null || dunst &
 feh --bg-fill ~/.config/bspwm/wallpaper.jpg &
 
 bspc monitor "$(xrandr -q | awk '/ connected/ {print $1; exit}')" -d I II III IV V VI VII VIII IX X
 
-bspc config normal_border_color     '#333333'
-bspc config focused_border_color    '#ff6600'
-bspc config window_gap              12
-bspc config top_padding             23
-bspc config bottom_padding          0
-bspc config split_ratio             0.52
-bspc config border_width            3.2
-bspc config border_radius           10
-bspc config borderless_monocle      true
-bspc config gapless_monocle         true
-bspc config top_monocle_padding     10
-bspc config left_monocle_padding    0
-bspc config bottom_monocle_padding  0
-bspc config right_monocle_padding   0
+bspc config normal_border_color        '#333333'
+bspc config focused_border_color       '#ff6600'
+bspc config window_gap                 12
+bspc config top_padding                23
+bspc config bottom_padding             0
+bspc config split_ratio                0.52
+bspc config border_width               3.2
+bspc config border_radius              10
+bspc config borderless_monocle         true
+bspc config gapless_monocle            true
+bspc config top_monocle_padding        10
+bspc config left_monocle_padding       0
+bspc config bottom_monocle_padding     0
+bspc config right_monocle_padding      0
 
 bspc rule -a Yad state=floating center=true rectangle=400x150+0+0
-bspc rule -a librewolf follow=on state=monocle border=off
+bspc rule -a librewolf follow=on state=monocle borderless=on
+bspc rule -a Code state=monocle borderless=on
+bspc rule -a sober state=monocle borderless=on
