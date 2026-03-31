@@ -3,6 +3,8 @@ configuration {
     show-icons: true;
     icon-theme: "Papirus";
     font: "monospace 11";
+    display-drun: "";
+    display-run: "";
 }
 
 * {
@@ -45,7 +47,7 @@ prompt {
 
 entry {
     text-color: @fg;
-    placeholder: "Search...";
+    placeholder: " Search...";
     placeholder-color: @fg-dim;
 }
 
