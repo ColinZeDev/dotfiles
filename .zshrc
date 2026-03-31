@@ -24,8 +24,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 setopt CORRECT
 
 autoload -Uz colors && colors
-PROMPT="%F{039}╭─%f %F{105}%n%F{147}@%F{075}%m%f in %F{069}[%f%~%F{069}]%f
-%F{039}╰─%F{147}%% %f"
+PROMPT="%F{208}╭─%f %F{202}%n%F{214}@%F{166}%m%f in %F{130}[%f%~%F{130}]%f
+%F{208}╰─%F{214}%% %f"
 
 # Kitty Title
 precmd() { print -Pn "\e]2;Kitty at: %~\a"; }
@@ -47,7 +47,7 @@ cleanupsystem() {
 
 rebspwm() {
     bspc wm -r
-    pkill -USR1 sxhkd
+    pkill sxhkd && sxhkd &
     pkill picom && picom --daemon
 }
 
@@ -65,5 +65,18 @@ alias ccat="command cat"
 alias ls="/usr/local/bin/xlist" # https://github.com/DevHollo/bash-cmds/blob/main/cmds/xlist.sh
 alias lls="/sbin/ls"
 
+alias oml="npx oh-my-logo"
+alias oh-my-logo="npx oh-my-logo"
+
 fastfetch
 echo
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# fnm
+FNM_PATH="/home/ctech/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
