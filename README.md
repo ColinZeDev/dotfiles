@@ -28,7 +28,7 @@
 - Terminal: Kitty
 - File Manager: Thunar
 - Code Editor: Visual Studio Code
-- Screenshot tool: flameshot
+- Screenshot tool: flameshot<br>
 (let me know if i missed something here)
 
 ---
