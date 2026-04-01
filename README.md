@@ -29,6 +29,7 @@
 - File Manager: Thunar
 - Code Editor: Visual Studio Code
 - Screenshot tool: flameshot
+(let me know if i missed something here)
 
 ---
 
