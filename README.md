@@ -4,6 +4,34 @@
 
 ---
 
+### Info
+- Hardare: [Lenovo ThinkPad X1 Carbon Gen 8](https://www.lenovo.com/us/en/p/laptops/thinkpad/thinkpadx1/22tp2x1x1c8/22tp2x1x1c8)
+    - CPU: Intel Core i7-10610U
+    - Graphics: Integrated
+    - RAM: 16GB LPDDR3-2133
+    - Screen: 1920x1080@60hz
+    - Storage: 256GB NVMe SSD
+- Bootloader: Limine
+- Kernel: Linux LTS (might switch to zen)
+- OS: Arch Linux (btw)
+- Shell: Z Shell (zsh)
+- Network Config: NetworkManager (iwd backend)
+- Greeter: EmpTTY
+- Display Manager: X11
+- Audio Server: PipeWire
+- DE/WM: BSPWM
+- Hotkey Daemon: sxhkd
+- Status Bar: polybar
+- Compositor: picom
+- App Launcher: rofi
+- Browser: LibreWolf
+- Terminal: Kitty
+- File Manager: Thunar
+- Code Editor: Visual Studio Code
+- Screenshot tool: flameshot
+
+---
+
 #### Install
 
 **curl:**
