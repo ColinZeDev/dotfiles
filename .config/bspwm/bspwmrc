@@ -7,13 +7,15 @@
 
 export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 
+export MONITOR=$(xrandr -q | awk '/ connected/ {print $1; exit}')
+
 dbus-update-activation-environment --systemd DISPLAY XAUTHORITY DBUS_SESSION_BUS_ADDRESS # this is here too cause idk if the one in xinitrc works and i dont wanna fuck with it
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-MONITOR=$(xrandr -q | awk '/ connected/ {print $1; exit}') polybar orangeshitbar &
-picom --config ~/.config/picom/picom.conf &
+pgrep -x polybar > /dev/null || polybar orangeshitbar &
+pgrep -x picom > /dev/null || picom --config ~/.config/picom/picom.conf &
 pgrep -x dunst > /dev/null || dunst &
-feh --bg-fill ~/.config/bspwm/wallpaper.jpg &
+pgrep -x feh > /dev/null || feh --bg-fill ~/.config/bspwm/wallpaper.jpg &
 
 bspc monitor "$(xrandr -q | awk '/ connected/ {print $1; exit}')" -d I II III IV V VI VII VIII IX X
 
