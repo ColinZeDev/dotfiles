@@ -10,9 +10,9 @@ super + b
 super + c
     code
 
-# Obsidian
-super + o
-    flatpak run md.obsidian.Obsidian
+# Music App (Cider)
+super + m
+    cider
 
 # File manager
 super + e
@@ -21,6 +21,10 @@ super + e
 # App Launcher
 super + space
     rofi -show drun
+
+# BTOP (task manager)
+ctrl + shift + Escape
+    kitty -e btop
 
 # Lock screen
 super + alt + l
@@ -37,12 +41,23 @@ super + Escape
         --gtkrc "$HOME/.config/bspwm/misc/yad.css" \
         && bspc quit
 
+# Shutdown Prompt
+super + shift + Escape
+    yad --title="Shutdown" \
+        --text="Shutdown?" \
+        --button="Yes:0" \
+        --button="No:1" \
+        --center \
+        --on-top \
+        --gtkrc "$HOME/.config/bspwm/misc/yad.css" \
+        && shutdown now
+
 # --- Window Management ---
 
 super + f
     bspc node -t \~fullscreen
 
-super + shift + f
+super + t
     bspc node -t \~floating
 
 super + q
