@@ -5,6 +5,9 @@ configuration {
     font: "monospace 11";
     display-drun: "";
     display-run: "";
+    cycle: true;
+    drun-match-fields: "name,generic,exec,categories";
+    sorting-method: "fzf";
 }
 
 * {
@@ -31,6 +34,14 @@ mainbox {
     background-color: transparent;
     children: [inputbar, listview];
     spacing: 8px;
+}
+
+scrollbar {
+    background-color: #2a2a2a;
+    handle-color: @accent;
+    handle-width: 4px;
+    border-radius: 4px;
+    padding: 0 2px;
 }
 
 inputbar {
@@ -76,4 +87,13 @@ element-text {
 element-icon {
     background-color: transparent;
     size: 20px;
+}
+
+element normal urgent {
+    text-color: @urgent;
+}
+
+element selected urgent {
+    background-color: @urgent;
+    text-color: #000000;
 }
