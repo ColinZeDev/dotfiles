@@ -5,7 +5,7 @@ clear
 echo -e "\033[1m\033[38;5;214m+-----------------------------------------+\033[0m"
 echo -e "\033[1m\033[38;5;214m| ####################################### |\033[0m"
 echo -e "\033[1m\033[38;5;214m| ##   ColinZeDev's Dotfiles Installer ## |\033[0m"
-echo -e "\033[1m\033[38;5;214m| ##               v0.0.4              ## |\033[0m"
+echo -e "\033[1m\033[38;5;214m| ##               v0.0.5              ## |\033[0m"
 echo -e "\033[1m\033[38;5;214m| ####################################### |\033[0m"
 echo -e "\033[1m\033[38;5;214m+-----------------------------------------+\033[0m"
 echo
@@ -54,7 +54,12 @@ sudo pacman -Syu \
     papirus-icon-theme \
     brightnessctl \
     xdotool \
-    mpv
+    mpv \
+    flatpak
+
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+flatpak install io.gitlab.librewolf-community
 
 git clone https://aur.archlinux.org/yay.git /tmp/yay
 (cd /tmp/yay && makepkg -si)
