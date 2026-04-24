@@ -51,3 +51,8 @@ git clone https://github.com/ColinZeDev/dotfiles.git
 cd dotfiles
 bash _installdotfiles.sh
 ```
+
+---
+
+## Recent changes:
+- HUGE overhaul on polybar
