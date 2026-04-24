@@ -1,6 +1,6 @@
 # My Awesome Dotfiles for Arch Linux
 ### BSPWM
-![bspwm](https://raw.githubusercontent.com/ColinZeDev/dotfiles/refs/heads/main/bspwm-apr01_2026.png)
+![bspwm](https://raw.githubusercontent.com/ColinZeDev/dotfiles/refs/heads/main/BSPWM_2026-04-23_184620_Thu.png)
 
 ---
 
