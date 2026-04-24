@@ -5,10 +5,26 @@ clear
 echo -e "\033[1m\033[38;5;214m+-----------------------------------------+\033[0m"
 echo -e "\033[1m\033[38;5;214m| ####################################### |\033[0m"
 echo -e "\033[1m\033[38;5;214m| ##   ColinZeDev's Dotfiles Installer ## |\033[0m"
-echo -e "\033[1m\033[38;5;214m| ##               v0.0.2              ## |\033[0m"
+echo -e "\033[1m\033[38;5;214m| ##               v0.0.4              ## |\033[0m"
 echo -e "\033[1m\033[38;5;214m| ####################################### |\033[0m"
 echo -e "\033[1m\033[38;5;214m+-----------------------------------------+\033[0m"
 echo
+
+AUR_HELPER=""
+if command -v paru &>/dev/null; then
+    AUR_HELPER="paru"
+elif command -v yay &>/dev/null; then
+    AUR_HELPER="yay"
+fi
+
+if [[ -z "$AUR_HELPER" ]]; then
+    echo -e "\033[38;5;214mNo AUR helper found, installing yay...\033[0m"
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+    (cd /tmp/yay && makepkg -si)
+    AUR_HELPER="yay"
+else
+    echo -e "\033[38;5;214mUsing existing AUR helper: $AUR_HELPER\033[0m"
+fi
 
 sudo pacman -Syu \
     bspwm \
@@ -36,16 +52,20 @@ sudo pacman -Syu \
     flameshot \
     xclip \
     papirus-icon-theme \
-    brightnessctl
+    brightnessctl \
+    xdotool \
+    mpv
 
 git clone https://aur.archlinux.org/yay.git /tmp/yay
 (cd /tmp/yay && makepkg -si)
 
-yay -S \
+$AUR_HELPER -S \
     visual-studio-code-bin \
     i3lock-color \
     papirus-folders \
-    picom-ftlabs-git
+    picom-ftlabs-git \
+    ttf-nerd-fonts-symbols-mono \
+    ttf-fira-code
 
 git clone https://github.com/ColinZeDev/dotfiles.git /tmp/colin_dotfiles
 cp /tmp/colin_dotfiles/.zshrc ~/.zshrc
