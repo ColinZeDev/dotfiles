@@ -37,6 +37,7 @@ sudo pacman -Syu \
     kitty \
     thunar \
     tumbler \
+    ffmpegthumbnailer \
     pamixer \
     thunar-archive-plugin \
     yad \
